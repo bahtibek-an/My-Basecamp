@@ -1,0 +1,46 @@
+<div class="col-12 mb-4">
+    <div class="card border-dark">
+        <div class="card-header bg-light border">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <%= item.title %>
+                </div>
+                <div class="d-flex">
+                    <%= link_to "Edit", edit_project_topic_path(params[:project_id], item.id), class: "btn btn-dark", style: "margin-right: 5px;" %>
+                    <%= button_to "Delete", project_topic_path(params[:project_id], item.id), method: :delete, class: "btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+        <div class="card-body overflow-auto messages_list">
+
+            <div class="row message">
+                <div class="col">
+                    <% item.messages.each do |message| %>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="font-weight-bold text-secondary"><%= User.find(message.user_id).name %></p>
+                                <p><%= message.message %></p>
+                            </div>
+                            <div class="mt-3">
+                                <%= link_to "Edit", edit_project_topic_message_path(params[:project_id], item.id, message.id), class: "link-dark" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-body border bg-light">
+            <div class="row message">
+                <%= form_for :message, url: project_topic_messages_path(params[:project_id], item.id), class: "d-flex" do |form|%>
+                    <div class="text-field w-100">
+                        <%= form.text_field :message ,placeholder: "Message", class: "form-control w-100"%>
+                    </div>
+                    <div>
+                        <%= form.submit "Send", class: "btn btn-dark" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

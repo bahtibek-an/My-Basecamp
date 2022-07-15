@@ -1,0 +1,8 @@
+<div class="field" style="width: 550px;" >
+    <%= form_for :attachment, url: { action: "create" }, method: "post", multipart: true do |f| %>
+        <div class="field d-flex">
+            <%= f.file_field :files, multiple: true, class: "form-control", type: "file" %>
+            <%= f.submit "Add", class: "btn btn-dark w-25", style: "margin-left: 10px;" %>
+        </div>
+    <% end %>
+</div>

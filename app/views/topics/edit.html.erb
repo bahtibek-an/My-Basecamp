@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-5">
+        <div class="text-center">
+            <h1>Edit Topic</h1>
+        </div>
+        <div>
+           <%= form_with(model: [@project, @topic], class: "d-flex") do |form| %>
+            <div class="field w-75">
+                <%= form.label :title, style: "display: block" %>
+                <%= form.text_field :title, class: "form-control", value: @topic.title, style: "margin-bottom: .5rem;"%>
+            </div>
+            <div class="submit d-flex align-items-center">
+                <%= form.submit "Update", class: "btn btn-dark", style: "margin-left: 20px;"%>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

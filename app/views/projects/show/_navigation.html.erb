@@ -1,0 +1,11 @@
+<div style="flex-basis: 15%; margin-left: 20px;" >
+    <div class="btn btn-dark">
+        <%= link_to "Attachments", project_attachments_path(params[:id]), class: "link-light", style: "text-decoration: none;" %>         
+    </div>
+    <div class="btn btn-dark mt-3">
+        <%= link_to "Show Members", project_members_path(params[:id]), class: "link-light", style: "text-decoration: none;" %>
+    </div>
+    <div class="btn btn-dark mt-3">
+        <%= link_to "Topics", project_topics_path(params[:id]), class: "link-light", style: "text-decoration: none;" %>
+    </div>
+</div>

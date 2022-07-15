@@ -1,0 +1,11 @@
+<% if current_user.has_role? :member, Project.find(params[:project_id]) %>
+    <h1 class="mb-4">Messages</h1>
+<% else %>
+    <%= form_for :topic, url: project_topics_path(params[:project_id]), class: "d-flex align-items-center" do |form| %>
+        <div style="margin-bottom: 1.5rem;" >
+            <%= form.label :title, style: "display: block" %>
+            <%= form.text_field :title, :required => 'required', class: "form-control"%>
+        </div>
+        <%= form.submit "Add new Topic", class: "btn btn-dark", style: "margin-left: 20px;"%>
+    <% end %>
+<% end %>

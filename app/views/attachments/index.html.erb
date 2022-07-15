@@ -1,0 +1,12 @@
+<div class="mt-5 d-flex flex-column align-items-center" >
+    <div class="text-center">
+        <h1>Attachments</h1>
+    </div>
+    <div class="mt-4">
+        <%= render "form"%>
+    </div>
+
+    <div class="row row-cols-3 mt-4">
+        <%= render "attachment", project: @project %>
+    </div>
+</div>

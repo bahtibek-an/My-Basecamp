@@ -1,0 +1,13 @@
+<% content_for :title do %>
+    Project&nbsp№<%=params[:id]%>&nbspEdit
+<% end %>
+<div class="d-flex justify-content-center mt-5">
+    <div style="width: 600px">
+        <div class="text-center">
+            <h1>Editing project</h1>
+        </div>
+
+        <%= render "form", project: @project %>
+        <%= render "members/form"%>
+    </div>
+</div>

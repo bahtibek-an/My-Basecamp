@@ -1,0 +1,21 @@
+<% if @project.files.attached? %>
+    <% @project.files.each do |file| %>
+        <% if file.image? %>
+            <div class="col" style="position: relative; width: 200px; height: 180px;">
+                <%= image_tag(file, class: "img-thumbnail", style: "width: 100%; height: 100%; object-fit: contain;") %>
+                <div style="position: absolute; bottom: 5%; right: 10%">
+                    <%= button_to "Delete", project_attachment_destroy_path(@project.id, file.id), method: "post",class: "btn btn-danger" %>
+                </div>
+            </div>
+        <% else %>
+            <div class="border rounded col" style="width: 200px; height: 180px; position: relative;">
+                <div class="text-center mt-2">
+                    <%= link_to file.filename, url_for(file) , class: "link-dark" %>
+                </div>
+                <div style="position: absolute; bottom: 5%; right: 5%">
+                    <%= button_to "Delete", project_attachment_destroy_path(@project.id, file.id), method: "post",class: "btn btn-danger" %>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

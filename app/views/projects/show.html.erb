@@ -1,0 +1,27 @@
+<% content_for :title do %>
+    Project&nbsp;№<%=params[:id]%> 
+<% end %>
+<div class="d-flex mt-5 justify-content-evenly">
+    <div style="flex-basis: 15%;"></div>
+    <div class="w-75">
+        <%= render "projects/show/show_project", project: @project, members: @members %>
+
+        
+        <div class="m-3 d-flex justify-content-between">
+            <% if current_user.has_role? :member, Project.find(params[:id])%>
+                <%= form_for :destroy, url: members_destroy_path, method: :delete do |form| %>
+                    <%= form.hidden_field  :id, value: current_user.id %>
+                    <%= form.hidden_field  :project_id, value: params[:id]%>
+                    <%= form.submit "Delete from yourself", class: "btn btn-danger", style: "margin-right: 10px;" %>
+                <% end %>
+            <% else %>
+                <div>
+                    <%= link_to "Edit this project", edit_project_path(@project), class: "link-dark" %> |
+                    <%= link_to "Back to projects", projects_path, class: "link-dark" %>
+                </div>
+                <%= button_to "Destroy this project", @project, method: :delete, class: "btn btn-danger" %>
+            <% end %>
+        </div>
+    </div>
+    <%= render "projects/show/navigation", members: @members %>
+</div>
